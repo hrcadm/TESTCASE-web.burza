@@ -6,13 +6,18 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.1",
+        "fzaninotto/faker": "^1.8",
         "symfony/console": "*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "*",
+        "symfony/orm-pack": "^1.0",
         "symfony/yaml": "*"
     },
     "require-dev": {
+        "api-platform/schema-generator": "^2.1",
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "symfony/dotenv": "*",
+        "symfony/maker-bundle": "^1.7",
         "symfony/web-server-bundle": "*"
     },
     "config": {

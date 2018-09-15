@@ -1,56 +1,110 @@
 <?php
 
-namespace src\Entity;
+namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource
- * @ORM\Entity
- **/
+ * @ApiResource()
+ * @ORM\Entity(repositoryClass="App\Repository\PersonRepository")
+ */
 class Person
 {
-	/**
-	* @var int
-	*
-	* @ORM\Id
-	* @ORM\Column(type="integer")
-	**/
-	public $id;
-
-	/**
-	* @var string
-	*
-	* @ORM\Column(type="text")
-	**/
-	public $nickname;
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text")
-     **/
-    public $name;
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $nickname;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text")
-     **/
-    public $surname;
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text")
-     **/
-    public $gender;
+     * @ORM\Column(type="string", length=255)
+     */
+    private $surname;
 
     /**
-     * @var bool
-     *
+     * @ORM\Column(type="string", length=1)
+     */
+    private $gender;
+
+    /**
      * @ORM\Column(type="boolean")
-     **/
-    public $is_gamer;
+     */
+    private $isGamer;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(string $nickname): self
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getSurname(): ?string
+    {
+        return $this->surname;
+    }
+
+    public function setSurname(string $surname): self
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(string $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getIsGamer(): ?bool
+    {
+        return $this->isGamer;
+    }
+
+    public function setIsGamer(bool $isGamer): self
+    {
+        $this->isGamer = $isGamer;
+
+        return $this;
+    }
 }
