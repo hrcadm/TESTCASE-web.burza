@@ -5,10 +5,12 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Exception\InvalidValueException;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *     collectionOperations={"get", "post"},
+ *     collectionOperations={"get"={"normalization_context"={"groups"={"get"}}},
+ *                          "post"},
  *     itemOperations={"get", "delete"}
  * )
  * @ORM\Entity(repositoryClass="App\Repository\PersonRepository")
@@ -16,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Person
 {
     /**
+     * @Groups({"get"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -23,6 +26,7 @@ class Person
     private $id;
 
     /**
+     * @Groups({"get"})
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $nickname;
@@ -43,6 +47,7 @@ class Person
     private $gender;
 
     /**
+     * @Groups({"get"})
      * @ORM\Column(type="boolean")
      */
     private $isGamer;
@@ -110,7 +115,7 @@ class Person
 
     public function setGender(string $gender): self
     {
-        if($gender !== 'M' || $gender !== 'F')
+        if($gender !== 'M' && $gender !== 'F')
         {
             throw new InvalidValueException('Invalid gender!', 422);
         }

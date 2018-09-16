@@ -19,6 +19,7 @@ class PersonFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
 
             $person = new Person();
+
             $person->setNickname($faker->word);
             $person->setName($faker->firstName);
             $person->setSurname($faker->lastName);
