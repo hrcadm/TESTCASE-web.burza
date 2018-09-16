@@ -9,9 +9,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *     collectionOperations={"get"={"normalization_context"={"groups"={"get"}}},
- *                          "post"},
- *     itemOperations={"get", "delete"}
+ *     normalizationContext={"groups"={"get"}},
+ *     itemOperations={
+ *         "get",
+ *         "put"={
+ *             "normalization_context"={"groups"={"put"}}
+ *         },
+ *         "delete"
+ *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\PersonRepository")
  */
@@ -32,22 +37,25 @@ class Person
     private $nickname;
 
     /**
+     * @Groups({"put"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Groups({"put"})
      * @ORM\Column(type="string", length=255)
      */
     private $surname;
 
     /**
+     * @Groups({"put"})
      * @ORM\Column(type="string", length=1)
      */
     private $gender;
 
     /**
-     * @Groups({"get"})
+     * @Groups({"get", "put"})
      * @ORM\Column(type="boolean")
      */
     private $isGamer;
