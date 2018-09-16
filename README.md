@@ -1,6 +1,6 @@
-#webburza test project
+# webburza test project
 
-##**_Project Setup Guide_**
+## **_Project Setup Guide_**
 
 ### 1. Clone the project
 ### 2. Run _composer install_ to pull in the dependancies
