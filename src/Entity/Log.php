@@ -5,12 +5,11 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 
 /**
  * @ApiResource(
  *     collectionOperations={"get"},
- *     itemOperations={},
+ *     itemOperations={"get"},
  *     attributes={"order"={"timestamp": "DESC"}}
  * )
  * @ORM\Entity(repositoryClass="App\Repository\LogRepository")
@@ -48,11 +47,9 @@ class Log
     {
         return $this->endpoint;
     }
-
     public function setEndpoint(string $endpoint): self
     {
         $this->endpoint = $endpoint;
-
         return $this;
     }
 

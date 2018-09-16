@@ -20,7 +20,7 @@ class PersonFixtures extends Fixture
 
             $person = new Person();
 
-            $person->setNickname($faker->word);
+            $person->setNickname('test-00-'.$faker->word);
             $person->setName($faker->firstName);
             $person->setSurname($faker->lastName);
             $person->setGender('M');
